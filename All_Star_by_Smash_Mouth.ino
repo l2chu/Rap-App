@@ -1,4 +1,4 @@
-/*Arduino speaker song tutorial
+/*Arduino speaker song 
  * This program will play the song of 'All Star' by Smash Mouth 
  * transcribed from https://musescore.com/user/8335901/scores/2590566
  * Created 21 Oct 2017
