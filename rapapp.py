@@ -1,3 +1,5 @@
+# MICHELLE CAPLIN WROTE THIS SWAG 4 SD H4X (LILLIAN, WILLOW, KAREN)
+
 import pronouncing as pro
 import os
 import random
@@ -29,13 +31,15 @@ def GetArticle():
             except: 
                 i+=1
             finally:
-                intro = results[i] + ": A Rap auto-generated from Wikipedia with Wiki-Rap-App\n"
+                topic = results[i]
+                #intro = results[i] + ": A Rap auto-generated from Wikipedia with Wiki-Rap-App\n"
                 p = wikipedia.summary(results[i], sentences=10)
                 break
     else:
-        intro = sys.argv[1] + ": A Rap auto-generated from Wikipedia with Wiki-Rap-App\n"
+        topic = sys.argv[1]
+        #intro = sys.argv[1] + ": A Rap auto-generated from Wikipedia with Wiki-Rap-App\n"
         p = wikipedia.summary(sys.argv[1], sentences=10)
-    return p, intro
+    return p, topic
         
     
 
@@ -86,8 +90,8 @@ print getEggPuns()
     
 
 
-def MakeRap(rhymes, intro):
-    rap = intro
+def MakeRap(rhymes, topic):
+    rap = topic + ": A sick rap auto-generated from Wikipedia with Wiki-Rap-App.\n"
     for key in rhymes:
         if len(rhymes[key]) > 1:
             x = [[i] for i in range(len(rhymes[key]))]
@@ -103,22 +107,28 @@ def MakeRap(rhymes, intro):
                 else:
                     inarow = 0
                 last_rhyme = r
-                if inarow < 2:
+                if inarow < 1:
                     rap += rhyme + ". \n"
     return rap
                   
                   
 def main():  
-    text, intro = GetArticle()
+    text, topic = GetArticle()
     rhymes = FindRhymes(text)
-    rap = MakeRap(rhymes, intro)
-    print rap
+    rap = MakeRap(rhymes, topic)
+    out_file = open(topic + "-rap.txt", "w")
+    #out_file.write(rap)
+    #out_file.close()
     rap = rap.split("\n")
+    for line in rap:
+        line = line.encode('utf-8')
+        #print line
+        out_file.write(line + "\n")
+    out_file.close()
     for line in rap:
         try:
             os.system("say '%s' " % line)
         except:
             next
-
 
 main()
