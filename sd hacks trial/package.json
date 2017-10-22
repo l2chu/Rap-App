@@ -1,0 +1,9 @@
+{
+  "name": "Rap_App",
+  "version": "0.0.1",
+  "description": "Create a rap from any topic",
+  "engines": {
+    "node": "6.10.2",
+    "npm": "3.10.10"
+  }
+}
