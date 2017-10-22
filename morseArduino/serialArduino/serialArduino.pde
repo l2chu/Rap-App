@@ -83,7 +83,7 @@ void readData(String myFileName){
  
  
  /* keep reading each line until you get to the end of the file */
- while((text=br.readLine())!=null){
+ if((text=br.readLine())!=null){
  /* Spilt each line up into bits and pieces using a comma as a separator */
  subtext = text.toCharArray();
  
