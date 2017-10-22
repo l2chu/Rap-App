@@ -8,7 +8,8 @@ import sys
 if len(sys.argv) < 2:
     print "Choose a topic, homie"
     exit(0)
-text = ""   
+text = ""  
+#intro = "" 
     
     
 def GetArticle():
@@ -28,13 +29,13 @@ def GetArticle():
             except: 
                 i+=1
             finally:
-                print "\n" + results[i] + ": A Rap auto-generated from Wikipedia by Rap-App\n"
+                intro = results[i] + ": A Rap auto-generated from Wikipedia with Wiki-Rap-App\n"
                 p = wikipedia.summary(results[i], sentences=10)
                 break
-    finally:
-        print "\n" + sys.argv[1] + ": A Rap auto-generated from Wikipedia by Rap-App\n"
+    else:
+        intro = sys.argv[1] + ": A Rap auto-generated from Wikipedia with Wiki-Rap-App\n"
         p = wikipedia.summary(sys.argv[1], sentences=10)
-    return p
+    return p, intro
         
     
 
@@ -85,8 +86,8 @@ print getEggPuns()
     
 
 
-def MakeRap(rhymes):
-    rap = ""
+def MakeRap(rhymes, intro):
+    rap = intro
     for key in rhymes:
         if len(rhymes[key]) > 1:
             x = [[i] for i in range(len(rhymes[key]))]
@@ -108,13 +109,16 @@ def MakeRap(rhymes):
                   
                   
 def main():  
-    text = GetArticle()
+    text, intro = GetArticle()
     rhymes = FindRhymes(text)
-    rap = MakeRap(rhymes)
-
+    rap = MakeRap(rhymes, intro)
     print rap
-
-    os.system("say '%s' " % rap)
+    rap = rap.split("\n")
+    for line in rap:
+        try:
+            os.system("say '%s' " % line)
+        except:
+            next
 
 
 main()
