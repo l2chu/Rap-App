@@ -1,3 +1,11 @@
+/*Arduino speaker song tutorial
+ * This program will play the song of 'All Star' by Smash Mouth 
+ * transcribed from https://musescore.com/user/8335901/scores/2590566
+ * Created 21 Oct 2017
+ * by Karen Chiem
+ */
+
+// pitch definitions in Hz
 #define NOTE_B0  31
 #define NOTE_C1  33
 #define NOTE_CS1 35
@@ -88,13 +96,6 @@
 #define NOTE_D8  4699
 #define NOTE_DS8 4978
 #define END -1
-
-/*Arduino speaker song tutorial
- * This program will play the song of 'All Star' by Smash Mouth
- * Created 21 Oct 2017
- * by Karen Chiem
- */
-
 
 // notes in the song 'All Star' by Smash Mouth
 int melody[] = {
