@@ -1,5 +1,7 @@
 /*
- *
+ * This file takes ascii codes and converts them to 
+ * morse codes and plays them on the Arduino.
+ * Authors: Willow, Lillian, Michelle, Karen
  */
 byte output;//output signal from pin 3
 byte input;//input character from processor, also wpm
